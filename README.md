@@ -58,7 +58,15 @@ python3 -m accelerate.commands.launch \
     --log_samples_suffix $LOG_SUFFIX \
     --output_path "logs/"
 ```
-For more models' evaluation, please refer to the `eval_scripts/run.sh`.
+For more models' evaluation, please refer to the `eval_scripts/run_image.sh` and `eval_scripts/run_video.sh`.
+
+### Aggregating Results
+
+The full SITE-Bench includes `site_bench_image` and `site_bench_video` subsets. Since we use `Chance-Ajusted-Accuracy(CAA)` instead of normal `Accuracy` metric, additional post-processing is needed for the final full set results. Please get the original evaluation raw jsonl files from lmms-eval and run `eval_scripts/aggregate.py` as following:
+```
+python aggregate.py $lmms_site_bench_image_eval_file $lmms_site_bench_video_eval_file
+```
+
 
 ## VLA Experiments
 
